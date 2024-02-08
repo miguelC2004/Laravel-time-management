@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\TimeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +17,12 @@ use App\Http\Controllers\HomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [HomeController::class, 'index'])->name('landing');
+Route::get('/', function () {
+    return view('Welcome');
+});
+
+Route::get('/register', [RegisterController::class, 'create'])->name('register');
+
  
 Route::middleware(['auth'])->group(function () {
 // Rutas de activity
